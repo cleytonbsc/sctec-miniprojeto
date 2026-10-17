@@ -4,7 +4,7 @@ namespace AutoCheck.ConsoleApp.Models
     {
         public int NumeroPortas { get; set; }
 
-        public Carro(String Marca, String Modelo, int Ano, double Quilometragem, List<ItemVistoria> ItensVistoria, bool VistoriaRealizada, int NumeroPortas)
+        public Carro(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> ItensVistoria, bool VistoriaRealizada, int NumeroPortas)
             : base(Marca, Modelo, Ano, Quilometragem, ItensVistoria, VistoriaRealizada)
         {
             this.NumeroPortas = NumeroPortas;
@@ -30,9 +30,9 @@ namespace AutoCheck.ConsoleApp.Models
 
         public override void Imprimir()
         {
-            base.Imprimir();
             Console.WriteLine("Tipo: Carro");
-            Console.WriteLine($"Número de Portas: {this.NumeroPortas}");
+            base.Imprimir();
+            Console.WriteLine($"Atributo Específico: {this.NumeroPortas} Portas");
         }
     }
 }

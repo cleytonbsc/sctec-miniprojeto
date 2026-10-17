@@ -39,20 +39,38 @@ namespace AutoCheck.ConsoleApp.Services
 
         public void ImprimirVistoria()
         {
-            if(veiculosVistoriado.Count == 0)
+            int TotalVeiculos = veiculosVistoriado.Count;
+            if(TotalVeiculos == 0)
             {
                 Console.WriteLine("Nenhuma vistoria realizada até o momemento.");
                 return;
             }
 
-            for(int i = 0; i < veiculosVistoriado.Count; i++)
+            Console.WriteLine("===================================================================");
+            Console.WriteLine("             AUTOCHECK .NET - MOTOR DE VISTORIA");
+            Console.WriteLine("===================================================================");
+            
+            for(int i = 0; i < TotalVeiculos; i++)
             {
+
+                Console.WriteLine($"[{i+1}/{TotalVeiculos}] PROCESSANDO VISTORIA\n");
                 veiculosVistoriado[i].Imprimir();
-                Console.WriteLine($"\n > AVALIAÇÃO DOS ITENS DE VISTORIA:");
+                Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA: {TotalVeiculos}");
                 foreach(ItemVistoria item in veiculosVistoriado[i].ItensVistoria)
                 {
-
-                    Console.WriteLine($"Item: {item.Nome}, Status: {item.Status}");
+                    if(item.Status == "Bom")
+                    {
+                        Console.WriteLine($"[OK] {item.Nome}  ---------- Status: {item.Status} (10 pts)");
+                    }
+                    else if(item.Status == "Regular")
+                    {
+                        Console.WriteLine($"[!] {item.Nome}  ---------- Status: {item.Status} (5 pts)");
+                    }
+                    else if(item.Status == "Ruim")
+                    {
+                        Console.WriteLine($"[X] {item.Nome}  ---------- Status: {item.Status} (0 pts)");
+                    }
+                    
                 }
                 PontuacaoVistoria(veiculosVistoriado[i]);
             }
@@ -95,25 +113,25 @@ namespace AutoCheck.ConsoleApp.Services
                 {
                     statusVistoria = "REPROVADO NA VISTORIA";
                 }
-                Console.WriteLine($"> RESUMO DA PONTUAÇÃO: Pontuação Atingida: {pontuacao} de {pontuacaoMaxima} \n Percentual de Aprovação: ({percentual:F2}%) \n Classificação Final: {statusVistoria}");
+                Console.WriteLine($"\n> RESUMO DA PONTUAÇÃO:\n - Pontuação Atingida: {pontuacao} de {pontuacaoMaxima} \n - Percentual de Aprovação: ({percentual:F2}%) \n - Classificação Final: {statusVistoria}\n");
 
                 Console.WriteLine($"\n> RELATÓRIO DE MANUTENÇÃO E RECOMENDAÇÕES DA OFICINA:");
                 if(itensVistoriaRuim.Count > 0 || itensVistoriaRegular.Count > 0)
                 {
                     if (itensVistoriaRuim.Count > 0)
                     {
-                        Console.WriteLine($" ITENS CRÍTICOS / REPROVADOS (AÇÃO IMDEDIATA):");
+                        Console.WriteLine($"\n🔴 ITENS CRÍTICOS / REPROVADOS (AÇÃO IMDEDIATA):\n");
                         foreach(ItemVistoria item in itensVistoriaRuim)
                         {
-                            Console.WriteLine($"Item: {item.Nome}");
+                            Console.WriteLine($"- {item.Nome}");
                         }
                     }
                     if(itensVistoriaRegular.Count > 0)
                     {
-                        Console.WriteLine($" ITENS DE ATENÇÃO (REVISÃO PREVENTIVA):");
+                        Console.WriteLine($"\n🟡 ITENS DE ATENÇÃO (REVISÃO PREVENTIVA):\n");
                         foreach(ItemVistoria item in itensVistoriaRegular)
                         {
-                            Console.WriteLine($"Item: {item.Nome}");
+                            Console.WriteLine($"- {item.Nome}");
                         }
                     }
                 } else

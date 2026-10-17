@@ -5,13 +5,13 @@ namespace AutoCheck.ConsoleApp.Models
         public String Marca { get; set; }
         public String Modelo { get; set; }
         public int Ano { get; set; }
-        public double Quilometragem { get; set; }
+        public decimal Quilometragem { get; set; }
 
         public List<ItemVistoria> ItensVistoria = new List<ItemVistoria>();
 
         public bool VistoriaRealizada { get; set; }
 
-        public Veiculo(String Marca, String Modelo, int Ano, double Quilometragem, List<ItemVistoria> ItensVistoria, bool VistoriaRealizada)
+        public Veiculo(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> ItensVistoria, bool VistoriaRealizada)
         {
             this.Marca = Marca;
             this.Modelo = Modelo;
@@ -48,16 +48,14 @@ namespace AutoCheck.ConsoleApp.Models
             Console.WriteLine("Digite o ano do veículo:");
             this.Ano = int.Parse(Console.ReadLine());
             Console.WriteLine("Digite a quilometragem do veículo:");
-            this.Quilometragem = double.Parse(Console.ReadLine());
+            this.Quilometragem = decimal.Parse(Console.ReadLine());
         }
 
         public virtual void Imprimir()
         {
             Console.WriteLine("\n> DADOS DO VEÍCULO:");
-            Console.WriteLine($"Marca: {this.Marca}");
-            Console.WriteLine($"Modelo: {this.Modelo}");
-            Console.WriteLine($"Ano: {this.Ano}");
-            Console.WriteLine($"Quilometragem: {this.Quilometragem}");
+            Console.WriteLine($"Marca: {this.Marca} Modelo: {this.Modelo}");
+            Console.WriteLine($"Ano: {this.Ano} | Quilometragem: {this.Quilometragem} km");
             Console.WriteLine($"Vistoria Realizada: {this.VistoriaRealizada}");
         }
     }
