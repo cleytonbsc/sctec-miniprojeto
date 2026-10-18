@@ -7,18 +7,16 @@ namespace AutoCheck.ConsoleApp.Models
         public int Ano { get; set; }
         public decimal Quilometragem { get; set; }
 
-        public List<ItemVistoria> ItensVistoria = new List<ItemVistoria>();
+        public List<ItemVistoria> VistoriaRealizada = new List<ItemVistoria>();
 
-        public bool VistoriaRealizada { get; set; }
-
-        public Veiculo(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> ItensVistoria, bool VistoriaRealizada)
+        public Veiculo(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada)
         {
             this.Marca = Marca;
             this.Modelo = Modelo;
             this.Ano = Ano;
             this.Quilometragem = Quilometragem;
-            this.ItensVistoria = ItensVistoria;
-            this.VistoriaRealizada = VistoriaRealizada; 
+            this.VistoriaRealizada = VistoriaRealizada;
+
         }
 
         public void AdicionarItemVistoria(String nome, String status)
@@ -26,14 +24,14 @@ namespace AutoCheck.ConsoleApp.Models
             ItemVistoria item = new ItemVistoria();
             item.Nome = nome;
             item.SetStatus(status);
-            ItensVistoria.Add(item);
+            VistoriaRealizada.Add(item);
         }
 
         public virtual List<String> ObterCheckListObrigatorio()
         {
             return new List<String>
             {
-                "Nível de Óleo do Moto",
+                "Nível de Óleo do Motor",
                 "Bateria e Sistema Elétrico",
                 "Documentação Regularizada"
             };
@@ -56,7 +54,42 @@ namespace AutoCheck.ConsoleApp.Models
             Console.WriteLine("\n> DADOS DO VEÍCULO:");
             Console.WriteLine($"Marca: {this.Marca} Modelo: {this.Modelo}");
             Console.WriteLine($"Ano: {this.Ano} | Quilometragem: {this.Quilometragem} km");
-            Console.WriteLine($"Vistoria Realizada: {this.VistoriaRealizada}");
+        }
+
+    public virtual String ItemRecomendar(ItemVistoria item)
+        {
+            String ItemRecomendacao = "Nenhuma recomendação.";
+            if(item.Status == "Ruim")
+            {
+                if(item.Nome == "Nível de Óleo do Motor")
+                {
+                     ItemRecomendacao = "Recomendamos a troca imediata do óleo do motor para evitar danos ao veículo.";
+                }
+                else if(item.Nome == "Bateria e Sistema Elétrico")
+                {
+                    ItemRecomendacao = "Recomendamos a substituição da bateria e verificação do sistema elétrico para garantir o funcionamento adequado do veículo.";
+                }
+                else if(item.Nome == "Documentação Regularizada")
+                {
+                    ItemRecomendacao = "Recomendamos regularizar a documentação do veículo para evitar problemas legais.";
+                }
+            }
+            else if(item.Status == "Regular")
+            {
+                if(item.Nome == "Nível de Óleo do Motor")
+                {
+                     ItemRecomendacao = "Revisar o nível de óleo do motor para evitar danos ao veículo.";
+                }
+                else if(item.Nome == "Bateria e Sistema Elétrico")
+                {
+                    ItemRecomendacao = "Revisar a bateria e verificação do sistema elétrico para garantir o funcionamento adequado do veículo.";
+                }
+                else if(item.Nome == "Documentação Regularizada")
+                {
+                    ItemRecomendacao = "Revisar a documentação do veículo para garantir que esteja em dia.";
+                }
+            }
+            return ItemRecomendacao;
         }
     }
 }

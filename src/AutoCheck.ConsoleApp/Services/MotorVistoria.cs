@@ -10,7 +10,7 @@ namespace AutoCheck.ConsoleApp.Services
         public List<Veiculo> veiculosVistoriado = new List<Veiculo>();
         public void VistoriaCarro()
         {      
-            Carro carro = new Carro("", "", 0, 0, new List<ItemVistoria>(), false, 0);
+            Carro carro = new Carro("", "", 0, 0, new List<ItemVistoria>(), 0);
             carro.Cadastrar();
 
             Console.WriteLine("Checklist Obrigatório:");
@@ -22,14 +22,13 @@ namespace AutoCheck.ConsoleApp.Services
                 carro.AdicionarItemVistoria(item, status);
             }
 
-            carro.VistoriaRealizada = true;
             veiculosVistoriado.Add(carro);
 
             for(int i = 0; i < veiculosVistoriado.Count; i++)
             {
                 veiculosVistoriado[i].Imprimir();
                 Console.WriteLine($"\n > AVALIAÇÃO DOS ITENS DE VISTORIA:");
-                foreach(ItemVistoria item in veiculosVistoriado[i].ItensVistoria)
+                foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
                 {
 
                     Console.WriteLine($"Item: {item.Nome}, Status: {item.Status}");
@@ -55,8 +54,8 @@ namespace AutoCheck.ConsoleApp.Services
 
                 Console.WriteLine($"[{i+1}/{TotalVeiculos}] PROCESSANDO VISTORIA\n");
                 veiculosVistoriado[i].Imprimir();
-                Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA: {TotalVeiculos}");
-                foreach(ItemVistoria item in veiculosVistoriado[i].ItensVistoria)
+                Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA: ({veiculosVistoriado[i].VistoriaRealizada.Count} ITENS)");
+                foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
                 {
                     if(item.Status == "Bom")
                     {
@@ -73,16 +72,20 @@ namespace AutoCheck.ConsoleApp.Services
                     
                 }
                 PontuacaoVistoria(veiculosVistoriado[i]);
+
+                Console.WriteLine("\n===================================================================");
+                Console.WriteLine("            FIM DO PROCESSAMENTO DE VISTORIAS     ");
+                Console.WriteLine("===================================================================");
             }
         }
 
         public void PontuacaoVistoria(Veiculo veiculo)
         {
                 decimal pontuacao = 0;
-                decimal pontuacaoMaxima = veiculo.ItensVistoria.Count * 10;
+                decimal pontuacaoMaxima = veiculo.VistoriaRealizada.Count * 10;
                 List<ItemVistoria> itensVistoriaRuim = new List<ItemVistoria>();
                 List<ItemVistoria> itensVistoriaRegular = new List<ItemVistoria>();
-                foreach(ItemVistoria item in veiculo.ItensVistoria)
+                foreach(ItemVistoria item in veiculo.VistoriaRealizada)
                 {
                     if(item.Status == "Bom")
                     {
@@ -100,7 +103,7 @@ namespace AutoCheck.ConsoleApp.Services
                     }
                 }
                 decimal percentual = pontuacao / pontuacaoMaxima * 100;
-                String statusVistoria = "";
+                String statusVistoria;
                 if(percentual >= 90)
                 {
                     statusVistoria = "APROVADO COM EXCELÊNCIA";
@@ -123,7 +126,7 @@ namespace AutoCheck.ConsoleApp.Services
                         Console.WriteLine($"\n🔴 ITENS CRÍTICOS / REPROVADOS (AÇÃO IMDEDIATA):\n");
                         foreach(ItemVistoria item in itensVistoriaRuim)
                         {
-                            Console.WriteLine($"- {item.Nome}");
+                            Console.WriteLine($"- {item.Nome}: {veiculo.ItemRecomendar(item)}");
                         }
                     }
                     if(itensVistoriaRegular.Count > 0)
@@ -131,7 +134,7 @@ namespace AutoCheck.ConsoleApp.Services
                         Console.WriteLine($"\n🟡 ITENS DE ATENÇÃO (REVISÃO PREVENTIVA):\n");
                         foreach(ItemVistoria item in itensVistoriaRegular)
                         {
-                            Console.WriteLine($"- {item.Nome}");
+                            Console.WriteLine($"- {item.Nome}: {veiculo.ItemRecomendar(item)}");
                         }
                     }
                 } else
