@@ -21,7 +21,7 @@ namespace AutoCheck.ConsoleApp.Models
 
         public override void Cadastrar()
         {
-            Console.WriteLine("Cadastro de carro:");
+            Console.WriteLine("\nCadastro de carro:");
             base.Cadastrar();
             Console.WriteLine("Digite o número de portas do carro:");
             this.NumeroPortas = int.Parse(Console.ReadLine());
@@ -31,7 +31,7 @@ namespace AutoCheck.ConsoleApp.Models
         {
             Console.WriteLine("Tipo: Carro");
             base.Imprimir();
-            Console.WriteLine($"Atributo Específico: {this.NumeroPortas} Portas");
+            Console.WriteLine($"\n- Atributo Específico: {this.NumeroPortas} Portas");
         }
 
         public override String ItemRecomendar(ItemVistoria item)

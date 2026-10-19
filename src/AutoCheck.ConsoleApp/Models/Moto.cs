@@ -21,7 +21,7 @@ namespace AutoCheck.ConsoleApp.Models
 
         public override void Cadastrar()
         {
-            Console.WriteLine("Cadastro de moto:");
+            Console.WriteLine("\nCadastro de moto:");
             base.Cadastrar();
             Console.WriteLine("Digite o número de cilindradas da moto:");
             this.Cilindradas = int.Parse(Console.ReadLine());
@@ -31,7 +31,7 @@ namespace AutoCheck.ConsoleApp.Models
         {
             Console.WriteLine("Tipo: Moto");
             base.Imprimir();
-            Console.WriteLine($"Atributo Específico: {this.Cilindradas} Cilindradas");
+            Console.WriteLine($"\n- Atributo Específico: {this.Cilindradas} Cilindradas");
         }
 
         public override String ItemRecomendar(ItemVistoria item)

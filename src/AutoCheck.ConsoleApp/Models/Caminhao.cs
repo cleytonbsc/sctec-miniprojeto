@@ -23,7 +23,7 @@ namespace AutoCheck.ConsoleApp.Models
 
         public override void Cadastrar()
         {
-            Console.WriteLine("Cadastro de caminhão:");
+            Console.WriteLine("\nCadastro de caminhão:");
             base.Cadastrar();
             Console.WriteLine("Digite o número de eixos do caminhão:");
             this.QuantidadeEixos = int.Parse(Console.ReadLine());
@@ -35,7 +35,7 @@ namespace AutoCheck.ConsoleApp.Models
         {
             Console.WriteLine("Tipo: Caminhão");
             base.Imprimir();
-            Console.WriteLine($"Atributo Específico: {this.QuantidadeEixos} Eixos, {this.CapacidadeCargaToneladas} Toneladas");
+            Console.WriteLine($"\n- Atributo Específico: {this.QuantidadeEixos} Eixos | {this.CapacidadeCargaToneladas} Toneladas");
         }
 
         public override String ItemRecomendar(ItemVistoria item)

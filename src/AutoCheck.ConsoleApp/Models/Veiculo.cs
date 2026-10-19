@@ -52,8 +52,8 @@ namespace AutoCheck.ConsoleApp.Models
         public virtual void Imprimir()
         {
             Console.WriteLine("\n> DADOS DO VEÍCULO:");
-            Console.WriteLine($"Marca: {this.Marca} Modelo: {this.Modelo}");
-            Console.WriteLine($"Ano: {this.Ano} | Quilometragem: {this.Quilometragem} km");
+            Console.WriteLine($"\n- Marca/Modelo: {this.Marca} {this.Modelo}");
+            Console.WriteLine($"\n- Ano: {this.Ano} | Quilometragem: {this.Quilometragem} km");
         }
 
     public virtual String ItemRecomendar(ItemVistoria item)

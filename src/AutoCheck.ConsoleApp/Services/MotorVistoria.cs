@@ -55,7 +55,7 @@ namespace AutoCheck.ConsoleApp.Services
             for(int i = 0; i < veiculosVistoriado.Count; i++)
             {
                 veiculosVistoriado[i].Imprimir();
-                Console.WriteLine($"\n > AVALIAÇÃO DOS ITENS DE VISTORIA:");
+                Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA:\n");
                 foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
                 {
 
@@ -109,9 +109,10 @@ namespace AutoCheck.ConsoleApp.Services
             for(int i = 0; i < TotalVeiculos; i++)
             {
 
-                Console.WriteLine($"[{i+1}/{TotalVeiculos}] PROCESSANDO VISTORIA\n");
+                Console.WriteLine($"\n[{i+1}/{TotalVeiculos}] PROCESSANDO VISTORIA");
+                Console.WriteLine("--------------------------------------------------\n");
                 veiculosVistoriado[i].Imprimir();
-                Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA: ({veiculosVistoriado[i].VistoriaRealizada.Count} ITENS)");
+                Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA: ({veiculosVistoriado[i].VistoriaRealizada.Count} ITENS)\n");
                 foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
                 {
                     if(item.Status == "Bom")
@@ -163,15 +164,15 @@ namespace AutoCheck.ConsoleApp.Services
                 String statusVistoria;
                 if(percentual >= 90)
                 {
-                    statusVistoria = "APROVADO COM EXCELÊNCIA";
+                    statusVistoria = "[ APROVADO COM EXCELÊNCIA ]";
                 }
                 else if(percentual >= 60)
                 {
-                    statusVistoria = "APROVADO COM APONTAMENTOS";
+                    statusVistoria = "[ APROVADO COM APONTAMENTOS ]";
                 }
                 else
                 {
-                    statusVistoria = "REPROVADO NA VISTORIA";
+                    statusVistoria = "[ REPROVADO NA VISTORIA ]";
                 }
                 Console.WriteLine($"\n> RESUMO DA PONTUAÇÃO:\n - Pontuação Atingida: {pontuacao} de {pontuacaoMaxima} \n - Percentual de Aprovação: ({percentual:F2}%) \n - Classificação Final: {statusVistoria}\n");
 
