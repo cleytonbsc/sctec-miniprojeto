@@ -5,6 +5,8 @@ using AutoCheck.ConsoleApp.Services;
 
 Vistoria motorVistoria = new Vistoria();
 
+motorVistoria.ImprimirVistoria();
 motorVistoria.VistoriaCarro();
-motorVistoria.VistoriaCarro();
+motorVistoria.VistoriaMoto();
+motorVistoria.VistoriaCaminhao();
 motorVistoria.ImprimirVistoria();

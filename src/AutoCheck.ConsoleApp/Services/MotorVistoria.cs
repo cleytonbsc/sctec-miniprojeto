@@ -36,6 +36,63 @@ namespace AutoCheck.ConsoleApp.Services
             }
         }
 
+        public void VistoriaMoto()
+        {      
+            Moto moto = new Moto("", "", 0, 0, new List<ItemVistoria>(), 0);
+            moto.Cadastrar();
+
+            Console.WriteLine("Checklist Obrigatório:");
+
+            foreach (String item in moto.ObterCheckListObrigatorio())
+            {
+                Console.WriteLine($"Qual o status do item {item}? (Bom, Regular, Ruim)");
+                string status = Console.ReadLine();
+                moto.AdicionarItemVistoria(item, status);
+            }
+
+            veiculosVistoriado.Add(moto);
+
+            for(int i = 0; i < veiculosVistoriado.Count; i++)
+            {
+                veiculosVistoriado[i].Imprimir();
+                Console.WriteLine($"\n > AVALIAÇÃO DOS ITENS DE VISTORIA:");
+                foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
+                {
+
+                    Console.WriteLine($"Item: {item.Nome}, Status: {item.Status}");
+                }
+            }
+        }
+
+        public void VistoriaCaminhao()
+        {      
+            Caminhao caminhao = new Caminhao("", "", 0, 0, new List<ItemVistoria>(), 0);
+            caminhao.Cadastrar();
+
+            Console.WriteLine("Checklist Obrigatório:");
+
+            foreach (String item in caminhao.ObterCheckListObrigatorio())
+            {
+                Console.WriteLine($"Qual o status do item {item}? (Bom, Regular, Ruim)");
+                string status = Console.ReadLine();
+                caminhao.AdicionarItemVistoria(item, status);
+            }
+
+            veiculosVistoriado.Add(caminhao);
+
+            for(int i = 0; i < veiculosVistoriado.Count; i++)
+            {
+                veiculosVistoriado[i].Imprimir();
+                Console.WriteLine($"\n > AVALIAÇÃO DOS ITENS DE VISTORIA:");
+                foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
+                {
+
+                    Console.WriteLine($"Item: {item.Nome}, Status: {item.Status}");
+                }
+            }
+        }
+
+
         public void ImprimirVistoria()
         {
             int TotalVeiculos = veiculosVistoriado.Count;
@@ -139,7 +196,7 @@ namespace AutoCheck.ConsoleApp.Services
                     }
                 } else
                     {
-                        Console.WriteLine("Nenhuma pendência mecânica identificada. Veículo liberado para operação!");
+                        Console.WriteLine("🟢 Nenhuma pendência mecânica identificada. Veículo liberado para operação!");
                     }
         }
     }
