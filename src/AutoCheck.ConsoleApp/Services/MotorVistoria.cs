@@ -165,7 +165,7 @@ namespace AutoCheck.ConsoleApp.Services
                     }
                 } else
                     {
-                        Console.WriteLine("🟢 Nenhuma pendência mecânica identificada. Veículo liberado para operação!");
+                        Console.WriteLine("\n🟢 Nenhuma pendência mecânica identificada. Veículo liberado para operação!");
                     }
         }
     }
