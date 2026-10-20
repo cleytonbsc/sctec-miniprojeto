@@ -6,9 +6,8 @@ namespace AutoCheck.ConsoleApp.Models
         public String Modelo { get; set; }
         public int Ano { get; set; }
         public decimal Quilometragem { get; set; }
-
         public List<ItemVistoria> VistoriaRealizada = new List<ItemVistoria>();
-
+        public String TipoVeiculo { get; set; }
         public Veiculo(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada)
         {
             this.Marca = Marca;
@@ -16,6 +15,7 @@ namespace AutoCheck.ConsoleApp.Models
             this.Ano = Ano;
             this.Quilometragem = Quilometragem;
             this.VistoriaRealizada = VistoriaRealizada;
+            this.TipoVeiculo = "";
 
         }
 
@@ -49,9 +49,10 @@ namespace AutoCheck.ConsoleApp.Models
             this.Quilometragem = decimal.Parse(Console.ReadLine());
         }
 
-        public virtual void Imprimir()
+        public virtual void Imprimir(String TipoVeiculo)
         {
-            Console.WriteLine("\n> DADOS DO VEÍCULO:");
+            Console.WriteLine($"\n> DADOS DO VEÍCULO:");
+            Console.WriteLine($"\n- Tipo: {TipoVeiculo}");
             Console.WriteLine($"\n- Marca/Modelo: {this.Marca} {this.Modelo}");
             Console.WriteLine($"\n- Ano: {this.Ano} | Quilometragem: {this.Quilometragem} km");
         }

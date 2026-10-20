@@ -13,7 +13,7 @@ namespace AutoCheck.ConsoleApp.Services
             Carro carro = new Carro("", "", 0, 0, new List<ItemVistoria>(), 0);
             carro.Cadastrar();
 
-            Console.WriteLine("Checklist Obrigatório:");
+            Console.WriteLine("\nChecklist Obrigatório:");
 
             foreach (String item in carro.ObterCheckListObrigatorio())
             {
@@ -23,17 +23,6 @@ namespace AutoCheck.ConsoleApp.Services
             }
 
             veiculosVistoriado.Add(carro);
-
-            for(int i = 0; i < veiculosVistoriado.Count; i++)
-            {
-                veiculosVistoriado[i].Imprimir();
-                Console.WriteLine($"\n > AVALIAÇÃO DOS ITENS DE VISTORIA:");
-                foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
-                {
-
-                    Console.WriteLine($"Item: {item.Nome}, Status: {item.Status}");
-                }
-            }
         }
 
         public void VistoriaMoto()
@@ -51,22 +40,11 @@ namespace AutoCheck.ConsoleApp.Services
             }
 
             veiculosVistoriado.Add(moto);
-
-            for(int i = 0; i < veiculosVistoriado.Count; i++)
-            {
-                veiculosVistoriado[i].Imprimir();
-                Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA:\n");
-                foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
-                {
-
-                    Console.WriteLine($"Item: {item.Nome}, Status: {item.Status}");
-                }
-            }
         }
 
         public void VistoriaCaminhao()
         {      
-            Caminhao caminhao = new Caminhao("", "", 0, 0, new List<ItemVistoria>(), 0);
+            Caminhao caminhao = new Caminhao("", "", 0, 0, new List<ItemVistoria>(), 0, 0);
             caminhao.Cadastrar();
 
             Console.WriteLine("Checklist Obrigatório:");
@@ -80,16 +58,6 @@ namespace AutoCheck.ConsoleApp.Services
 
             veiculosVistoriado.Add(caminhao);
 
-            for(int i = 0; i < veiculosVistoriado.Count; i++)
-            {
-                veiculosVistoriado[i].Imprimir();
-                Console.WriteLine($"\n > AVALIAÇÃO DOS ITENS DE VISTORIA:");
-                foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
-                {
-
-                    Console.WriteLine($"Item: {item.Nome}, Status: {item.Status}");
-                }
-            }
         }
 
 
@@ -111,7 +79,7 @@ namespace AutoCheck.ConsoleApp.Services
 
                 Console.WriteLine($"\n[{i+1}/{TotalVeiculos}] PROCESSANDO VISTORIA");
                 Console.WriteLine("--------------------------------------------------\n");
-                veiculosVistoriado[i].Imprimir();
+                veiculosVistoriado[i].Imprimir(veiculosVistoriado[i].TipoVeiculo);
                 Console.WriteLine($"\n> AVALIAÇÃO DOS ITENS DE VISTORIA: ({veiculosVistoriado[i].VistoriaRealizada.Count} ITENS)\n");
                 foreach(ItemVistoria item in veiculosVistoriado[i].VistoriaRealizada)
                 {

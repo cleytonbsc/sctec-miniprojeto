@@ -8,6 +8,7 @@ namespace AutoCheck.ConsoleApp.Models
             : base(Marca, Modelo, Ano, Quilometragem, VistoriaRealizada)
         {
             this.NumeroPortas = NumeroPortas;
+            TipoVeiculo = "Carro";
         } 
 
         public override List<String> ObterCheckListObrigatorio()
@@ -27,10 +28,9 @@ namespace AutoCheck.ConsoleApp.Models
             this.NumeroPortas = int.Parse(Console.ReadLine());
         }
 
-        public override void Imprimir()
+        public override void Imprimir(String TipoVeiculo)
         {
-            Console.WriteLine("Tipo: Carro");
-            base.Imprimir();
+            base.Imprimir(TipoVeiculo);
             Console.WriteLine($"\n- Atributo Específico: {this.NumeroPortas} Portas");
         }
 

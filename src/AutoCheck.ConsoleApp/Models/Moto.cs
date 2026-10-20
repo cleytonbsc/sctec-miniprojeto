@@ -4,10 +4,11 @@ namespace AutoCheck.ConsoleApp.Models
     {
         public int Cilindradas { get; set; }
 
-        public Moto(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada, int NumeroPortas)
+        public Moto(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada, int Cilindradas)
             : base(Marca, Modelo, Ano, Quilometragem, VistoriaRealizada)
         {
             this.Cilindradas = Cilindradas;
+            TipoVeiculo = "Moto";
         } 
 
         public override List<String> ObterCheckListObrigatorio()
@@ -27,10 +28,10 @@ namespace AutoCheck.ConsoleApp.Models
             this.Cilindradas = int.Parse(Console.ReadLine());
         }
 
-        public override void Imprimir()
+        public override void Imprimir(String TipoVeiculo)
         {
-            Console.WriteLine("Tipo: Moto");
-            base.Imprimir();
+
+            base.Imprimir(TipoVeiculo);
             Console.WriteLine($"\n- Atributo Específico: {this.Cilindradas} Cilindradas");
         }
 

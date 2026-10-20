@@ -5,11 +5,12 @@ namespace AutoCheck.ConsoleApp.Models
         public int QuantidadeEixos { get; set; }
         public double CapacidadeCargaToneladas { get; set; }
 
-        public Caminhao(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada, int NumeroPortas)
+        public Caminhao(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada, int QuantidadeEixos, double CapacidadeCargaToneladas)
             : base(Marca, Modelo, Ano, Quilometragem, VistoriaRealizada)
         {
             this.QuantidadeEixos = QuantidadeEixos;
             this.CapacidadeCargaToneladas = CapacidadeCargaToneladas;
+            TipoVeiculo = "Caminhao";
         } 
 
         public override List<String> ObterCheckListObrigatorio()
@@ -31,10 +32,10 @@ namespace AutoCheck.ConsoleApp.Models
             this.CapacidadeCargaToneladas = double.Parse(Console.ReadLine());
         }
 
-        public override void Imprimir()
+        public override void Imprimir(String TipoVeiculo)
         {
-            Console.WriteLine("Tipo: Caminhão");
-            base.Imprimir();
+            TipoVeiculo = "Caminhao";
+            base.Imprimir(TipoVeiculo);
             Console.WriteLine($"\n- Atributo Específico: {this.QuantidadeEixos} Eixos | {this.CapacidadeCargaToneladas} Toneladas");
         }
 
