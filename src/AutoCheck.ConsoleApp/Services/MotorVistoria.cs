@@ -30,7 +30,7 @@ namespace AutoCheck.ConsoleApp.Services
             Moto moto = new Moto("", "", 0, 0, new List<ItemVistoria>(), 0);
             moto.Cadastrar();
 
-            Console.WriteLine("Checklist Obrigatório:");
+            Console.WriteLine("\nChecklist Obrigatório:");
 
             foreach (String item in moto.ObterCheckListObrigatorio())
             {
@@ -47,7 +47,7 @@ namespace AutoCheck.ConsoleApp.Services
             Caminhao caminhao = new Caminhao("", "", 0, 0, new List<ItemVistoria>(), 0, 0);
             caminhao.Cadastrar();
 
-            Console.WriteLine("Checklist Obrigatório:");
+            Console.WriteLine("\nChecklist Obrigatório:");
 
             foreach (String item in caminhao.ObterCheckListObrigatorio())
             {
