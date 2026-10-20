@@ -142,7 +142,7 @@ namespace AutoCheck.ConsoleApp.Services
                 {
                     statusVistoria = "[ REPROVADO NA VISTORIA ]";
                 }
-                Console.WriteLine($"\n> RESUMO DA PONTUAÇÃO:\n - Pontuação Atingida: {pontuacao} de {pontuacaoMaxima} \n - Percentual de Aprovação: ({percentual:F2}%) \n - Classificação Final: {statusVistoria}\n");
+                Console.WriteLine($"\n> RESUMO DA PONTUAÇÃO:\n\n - Pontuação Atingida: {pontuacao} de {pontuacaoMaxima} \n - Percentual de Aprovação: ({percentual:F2}%) \n - Classificação Final: {statusVistoria}\n");
 
                 Console.WriteLine($"\n> RELATÓRIO DE MANUTENÇÃO E RECOMENDAÇÕES DA OFICINA:");
                 if(itensVistoriaRuim.Count > 0 || itensVistoriaRegular.Count > 0)
