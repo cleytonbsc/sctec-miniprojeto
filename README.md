@@ -20,26 +20,31 @@ Ao final, o sistema guarda a vistoria em memória e pode exibir um relatório co
 
 ## Como executar
 
-1. Clone o repositório e entre na pasta do projeto:
+1. Abra um terminal:
+
+   - No Windows, abra o **PowerShell** ou o **Prompt de Comando** pelo menu Iniciar;
+   - No VS Code, abra o projeto e selecione **Terminal > Novo Terminal**.
+
+2. Clone o repositório e entre na pasta do projeto:
 
    ```powershell
    git clone https://github.com/cleytonbsc/sctec-miniprojeto.git
    cd sctec-miniprojeto
    ```
 
-2. Restaure as dependências:
+3. Restaure as dependências:
 
    ```powershell
    dotnet restore .\src\AutoCheck.ConsoleApp\AutoCheck.ConsoleApp.csproj
    ```
 
-3. Execute a aplicação:
+4. Execute a aplicação:
 
    ```powershell
    dotnet run --project .\src\AutoCheck.ConsoleApp\AutoCheck.ConsoleApp.csproj
    ```
 
-4. Use o menu apresentado no terminal:
+5. Use o menu apresentado no terminal:
 
    - `1 - Realizar Nova Vistoria`: escolha o tipo de veículo, informe seus dados e responda ao checklist;
    - `2 - Exibir Relatório das Vistorias`: exiba as vistorias realizadas durante a execução atual;

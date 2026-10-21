@@ -98,11 +98,10 @@ namespace AutoCheck.ConsoleApp.Services
                     
                 }
                 PontuacaoVistoria(VeiculosVistoriado[i]);
-
-                Console.WriteLine("\n===================================================================");
-                Console.WriteLine("            FIM DO PROCESSAMENTO DE VISTORIAS     ");
-                Console.WriteLine("===================================================================");
             }
+            Console.WriteLine("\n===================================================================");
+            Console.WriteLine("            FIM DO PROCESSAMENTO DE VISTORIAS     ");
+            Console.WriteLine("===================================================================");
         }
 
         public void PontuacaoVistoria(Veiculo veiculo)
