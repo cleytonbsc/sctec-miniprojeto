@@ -133,4 +133,4 @@ sctec-miniprojeto/
 
 ## Vídeo de apresentação
 
-**Link:** _adicione aqui o link do vídeo de apresentação do projeto._
+**Link:** https://drive.google.com/file/d/1JcjQ4rCoxj9l6iiGxhc3ofVMtORmIh5Y/view?usp=sharing
