@@ -8,13 +8,13 @@ namespace AutoCheck.ConsoleApp.Models
         public decimal Quilometragem { get; set; }
         public List<ItemVistoria> VistoriaRealizada = new List<ItemVistoria>();
         public string TipoVeiculo { get; set; }
-        public Veiculo(string Marca, string Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada)
+        public Veiculo(string marca, string modelo, int ano, decimal quilometragem, List<ItemVistoria> vistoriaRealizada)
         {
-            this.Marca = Marca;
-            this.Modelo = Modelo;
-            this.Ano = Ano;
-            this.Quilometragem = Quilometragem;
-            this.VistoriaRealizada = VistoriaRealizada;
+            this.Marca = marca;
+            this.Modelo = modelo;
+            this.Ano = ano;
+            this.Quilometragem = quilometragem;
+            this.VistoriaRealizada = vistoriaRealizada;
             this.TipoVeiculo = "";
 
         }
