@@ -10,7 +10,7 @@ namespace AutoCheck.ConsoleApp.Models
         {
             this.QuantidadeEixos = quantidadeEixos;
             this.CapacidadeCargaToneladas = capacidadeCargaToneladas;
-            TipoVeiculo = "Caminhao";
+            TipoVeiculo = "Caminhão";
         } 
 
         public override List<string> ObterCheckListObrigatorio()
