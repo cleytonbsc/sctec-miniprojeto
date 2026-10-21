@@ -5,17 +5,17 @@ namespace AutoCheck.ConsoleApp.Models
         public int QuantidadeEixos { get; set; }
         public double CapacidadeCargaToneladas { get; set; }
 
-        public Caminhao(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada, int QuantidadeEixos, double CapacidadeCargaToneladas)
-            : base(Marca, Modelo, Ano, Quilometragem, VistoriaRealizada)
+        public Caminhao(string marca, string modelo, int ano, decimal quilometragem, List<ItemVistoria> vistoriaRealizada, int quantidadeEixos, double capacidadeCargaToneladas)
+            : base(marca, modelo, ano, quilometragem, vistoriaRealizada)
         {
-            this.QuantidadeEixos = QuantidadeEixos;
-            this.CapacidadeCargaToneladas = CapacidadeCargaToneladas;
+            this.QuantidadeEixos = quantidadeEixos;
+            this.CapacidadeCargaToneladas = capacidadeCargaToneladas;
             TipoVeiculo = "Caminhao";
         } 
 
-        public override List<String> ObterCheckListObrigatorio()
+        public override List<string> ObterCheckListObrigatorio()
         {
-            List<String> checkList = base.ObterCheckListObrigatorio();
+            List<string> checkList = base.ObterCheckListObrigatorio();
             checkList.Add("Tacógrafo");
             checkList.Add("Sistema de Freios a Ar");
             checkList.Add("Trava e Lona da Caçamba");
@@ -32,16 +32,15 @@ namespace AutoCheck.ConsoleApp.Models
             this.CapacidadeCargaToneladas = double.Parse(Console.ReadLine());
         }
 
-        public override void Imprimir(String TipoVeiculo)
+        public override void Imprimir(string TipoVeiculo)
         {
-            TipoVeiculo = "Caminhao";
             base.Imprimir(TipoVeiculo);
             Console.WriteLine($"\n- Atributo Específico: {this.QuantidadeEixos} Eixos | {this.CapacidadeCargaToneladas} Toneladas");
         }
 
-        public override String ItemRecomendar(ItemVistoria item)
+        public override string ItemRecomendar(ItemVistoria item)
         {
-            String ItemRecomendacao = base.ItemRecomendar(item);
+            string ItemRecomendacao = base.ItemRecomendar(item);
             if(item.Status == "Ruim")
             {
                 if(item.Nome == "Tacógrafo")

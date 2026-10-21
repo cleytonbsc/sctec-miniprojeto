@@ -3,10 +3,10 @@ namespace AutoCheck.ConsoleApp.Models
 {
     public class ItemVistoria 
     {
-        public String Nome { get; set; }
-        public String Status { get; protected set; }
+        public string Nome { get; set; }
+        public string Status { get; protected set; }
 
-        public bool ValidarStatus(String Status)
+        public bool ValidarStatus(string Status)
         {
             if (Status != "Bom" && Status != "Regular" && Status != "Ruim")
             {
@@ -18,7 +18,7 @@ namespace AutoCheck.ConsoleApp.Models
             }
         }
 
-        public void SetStatus(String status)
+        public void SetStatus(string status)
         {
             while (!ValidarStatus(status))
             {

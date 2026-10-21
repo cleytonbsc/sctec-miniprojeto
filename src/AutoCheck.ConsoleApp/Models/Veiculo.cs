@@ -2,13 +2,13 @@ namespace AutoCheck.ConsoleApp.Models
 {
     public abstract class Veiculo
     {
-        public String Marca { get; set; }
-        public String Modelo { get; set; }
+        public string Marca { get; set; }
+        public string Modelo { get; set; }
         public int Ano { get; set; }
         public decimal Quilometragem { get; set; }
         public List<ItemVistoria> VistoriaRealizada = new List<ItemVistoria>();
-        public String TipoVeiculo { get; set; }
-        public Veiculo(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada)
+        public string TipoVeiculo { get; set; }
+        public Veiculo(string Marca, string Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada)
         {
             this.Marca = Marca;
             this.Modelo = Modelo;
@@ -19,7 +19,7 @@ namespace AutoCheck.ConsoleApp.Models
 
         }
 
-        public void AdicionarItemVistoria(String nome, String status)
+        public void AdicionarItemVistoria(string nome, string status)
         {
             ItemVistoria item = new ItemVistoria();
             item.Nome = nome;
@@ -27,9 +27,9 @@ namespace AutoCheck.ConsoleApp.Models
             VistoriaRealizada.Add(item);
         }
 
-        public virtual List<String> ObterCheckListObrigatorio()
+        public virtual List<string> ObterCheckListObrigatorio()
         {
-            return new List<String>
+            return new List<string>
             {
                 "Nível de Óleo do Motor",
                 "Bateria e Sistema Elétrico",
@@ -49,17 +49,18 @@ namespace AutoCheck.ConsoleApp.Models
             this.Quilometragem = decimal.Parse(Console.ReadLine());
         }
 
-        public virtual void Imprimir(String TipoVeiculo)
+        public virtual void Imprimir(string tipoVeiculo)
         {
+            TipoVeiculo = tipoVeiculo;
             Console.WriteLine($"\n> DADOS DO VEÍCULO:");
             Console.WriteLine($"\n- Tipo: {TipoVeiculo}");
             Console.WriteLine($"\n- Marca/Modelo: {this.Marca} {this.Modelo}");
             Console.WriteLine($"\n- Ano: {this.Ano} | Quilometragem: {this.Quilometragem} km");
         }
 
-    public virtual String ItemRecomendar(ItemVistoria item)
+    public virtual string ItemRecomendar(ItemVistoria item)
         {
-            String ItemRecomendacao = "Nenhuma recomendação.";
+            string ItemRecomendacao = "Nenhuma recomendação.";
             if(item.Status == "Ruim")
             {
                 if(item.Nome == "Nível de Óleo do Motor")

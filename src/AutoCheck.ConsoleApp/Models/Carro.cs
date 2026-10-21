@@ -4,16 +4,16 @@ namespace AutoCheck.ConsoleApp.Models
     {
         public int NumeroPortas { get; set; }
 
-        public Carro(String Marca, String Modelo, int Ano, decimal Quilometragem, List<ItemVistoria> VistoriaRealizada, int NumeroPortas)
-            : base(Marca, Modelo, Ano, Quilometragem, VistoriaRealizada)
+        public Carro(string marca, string modelo, int ano, decimal quilometragem, List<ItemVistoria> vistoriaRealizada, int numeroPortas)
+            : base(marca, modelo, ano, quilometragem, vistoriaRealizada)
         {
-            this.NumeroPortas = NumeroPortas;
+            this.NumeroPortas = numeroPortas;
             TipoVeiculo = "Carro";
         } 
 
-        public override List<String> ObterCheckListObrigatorio()
+        public override List<string> ObterCheckListObrigatorio()
         {
-            List<String> checkList = base.ObterCheckListObrigatorio();
+            List<string> checkList = base.ObterCheckListObrigatorio();
             checkList.Add("Estepe e Macaco");
             checkList.Add("Triangulo de Sinalização");
             checkList.Add("Ar Condicionado Funciona");
@@ -28,15 +28,15 @@ namespace AutoCheck.ConsoleApp.Models
             this.NumeroPortas = int.Parse(Console.ReadLine());
         }
 
-        public override void Imprimir(String TipoVeiculo)
+        public override void Imprimir(string tipoVeiculo)
         {
-            base.Imprimir(TipoVeiculo);
+            base.Imprimir(tipoVeiculo);
             Console.WriteLine($"\n- Atributo Específico: {this.NumeroPortas} Portas");
         }
 
-        public override String ItemRecomendar(ItemVistoria item)
+        public override string ItemRecomendar(ItemVistoria item)
         {
-            String ItemRecomendacao = base.ItemRecomendar(item);
+            string ItemRecomendacao = base.ItemRecomendar(item);
             if(item.Status == "Ruim")
             {
                 if(item.Nome == "Estepe e Macaco")
